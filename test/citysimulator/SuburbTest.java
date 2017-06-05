@@ -99,13 +99,29 @@ public class SuburbTest {
      */
     @Test
     public void testPickStreet() {
-        System.out.println("pickStreet");
+        System.out.println("pickStreetLeft");
         Suburb instance = new Suburb("name");
-        Street expResult = null;
-        Street result = instance.pickStreet();
+        Street left = new Street("left");
+        Street right = new Street("right");
+        instance.setStreets(left, right);
+        Street expResult = left;
+        Street result = instance.pickStreet(0);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of pickStreet method, of class Suburb.
+     */
+    @Test
+    public void testPickStreetRight() {
+        System.out.println("pickStreetRight");
+        Suburb instance = new Suburb("name");
+        Street left = new Street("left");
+        Street right = new Street("right");
+        instance.setStreets(left, right);
+        Street expResult = right;
+        Street result = instance.pickStreet(1);
+        assertEquals(expResult, result);
     }
 
     /**
@@ -118,8 +134,6 @@ public class SuburbTest {
         Street expResult = null;
         Street result = instance.moveToStreet();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**

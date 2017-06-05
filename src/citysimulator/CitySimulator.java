@@ -154,15 +154,15 @@ class Suburb {
         }
     }
 
-    public Street pickStreet() {
-        if (RANGEN.nextInt(2) < 1) {
+    public Street pickStreet(int random) {
+        if (random < 1) {
             return streetLeft;
         }
         return streetRight;
     }
 
     public Street moveToStreet() {
-        Street street = pickStreet();
+        Street street = pickStreet(RANGEN.nextInt(2));
         street.addDriver(driver);
         return street;
     }
