@@ -77,9 +77,9 @@ class Driver {
         street = aStreet;
     }
 
-    public void updateSuburb(String name) {
+    public void updateSuburb(String suburb) {
         start = end;
-        end = name;
+        end = suburb;
     }
 
     public void travelDetails() {
@@ -171,7 +171,7 @@ class Suburb {
 class Street {
 
     private final String name;
-    private Suburb[] suburbs = new Suburb[3];
+    private final Suburb[] suburbs = new Suburb[3];
     private Driver driver;
 
     public Street(String name) {
@@ -180,6 +180,14 @@ class Street {
 
     public String getName() {
         return name;
+    }
+
+    public Driver getDriver() {
+        return driver;
+    }
+
+    public Suburb getSuburb(int index) {
+        return suburbs[index];
     }
 
     public void setSuburbs(Suburb suburb1, Suburb suburb2, Suburb exit) {
