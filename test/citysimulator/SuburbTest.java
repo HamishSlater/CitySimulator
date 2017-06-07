@@ -130,9 +130,13 @@ public class SuburbTest {
     @Test
     public void testMoveToStreet() {
         System.out.println("moveToStreet");
+        Driver driver = new Driver("name");
+        Street street = new Street("street");
         Suburb instance = new Suburb("name");
-        Street expResult = null;
-        Street result = instance.moveToStreet();
+        instance.addDriver(driver);
+        instance.setStreets(street, street);
+        Class expResult = Street.class;
+        Class result = instance.moveToStreet().getClass();
         assertEquals(expResult, result);
     }
 

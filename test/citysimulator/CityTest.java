@@ -17,22 +17,22 @@ import static org.junit.Assert.*;
  * @author Hamish
  */
 public class CityTest {
-    
+
     public CityTest() {
     }
-    
+
     @BeforeClass
     public static void setUpClass() {
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
     }
-    
+
     @Before
     public void setUp() {
     }
-    
+
     @After
     public void tearDown() {
     }
@@ -45,11 +45,22 @@ public class CityTest {
         System.out.println("getDriver");
         int driver = 0;
         City instance = new City();
-        Driver expResult = null;
-        Driver result = instance.getDriver(driver);
+        String expResult = "Driver 1";
+        String result = instance.getDriver(driver).getName();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of getDriver method, of class City.
+     */
+    @Test
+    public void testGetDriver2() {
+        System.out.println("getDriver");
+        int driver = 4;
+        City instance = new City();
+        String expResult = "Driver 5"; // don't expect the "unexpected"
+        String result = instance.getDriver(driver).getName();
+        assertEquals(expResult, result);
     }
 
     /**
@@ -59,11 +70,9 @@ public class CityTest {
     public void testGetDrivers() {
         System.out.println("getDrivers");
         City instance = new City();
-        Driver[] expResult = null;
+        Driver[] expResult = instance.drivers;
         Driver[] result = instance.getDrivers();
         assertArrayEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -73,52 +82,9 @@ public class CityTest {
     public void testPickSuburb() {
         System.out.println("pickSuburb");
         City instance = new City();
-        Suburb expResult = null;
-        Suburb result = instance.pickSuburb();
+        Class expResult = Suburb.class;
+        Class result = instance.pickSuburb().getClass();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of startDriver method, of class City.
-     */
-    @Test
-    public void testStartDriver() {
-        System.out.println("startDriver");
-        Driver driver = null;
-        City instance = new City();
-        instance.addDriver(driver);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of move method, of class City.
-     */
-    @Test
-    public void testMove() {
-        System.out.println("move");
-        Driver driver = null;
-        City instance = new City();
-        instance.move(driver);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of randomGenerator method, of class City.
-     */
-    @Test
-    public void testRandomGenerator() {
-        System.out.println("randomGenerator");
-        int range = 0;
-        City instance = new City();
-        int expResult = 0;
-        int result = instance.randomGenerator(range);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -127,11 +93,32 @@ public class CityTest {
     @Test
     public void testAddDriver() {
         System.out.println("addDriver");
-        Driver driver = null;
+        Driver driver = new Driver("driver");
         City instance = new City();
+        Class expResult = Suburb.class;
         instance.addDriver(driver);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Class result = instance.currentSuburb.getClass();
+        assertEquals(expResult, result);
+    }
+
+    /**
+     * Test of move method, of class City.
+     */
+    @Test
+    public void testMove() {
+        System.out.println("move");
+        Driver driver = new Driver("driver");
+        Street street = new Street("street");
+        Suburb suburb = new Suburb("suburb");
+        suburb.setStreets(street, street);
+        street.setSuburbs(suburb, suburb, suburb);
+        suburb.addDriver(driver);
+        City instance = new City();
+        instance.currentSuburb = suburb;
+        Suburb expResult = suburb;
+        instance.move(driver);
+        Suburb result = instance.currentSuburb;
+        assertEquals(expResult, result);
     }
 
     /**
@@ -140,10 +127,7 @@ public class CityTest {
     @Test
     public void testRun() {
         System.out.println("run");
-        City instance = new City();
-        instance.run();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        //instance.run(); Print
+        assertTrue(true);
     }
-    
 }

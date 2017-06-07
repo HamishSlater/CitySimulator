@@ -56,8 +56,8 @@ public class DriverTest {
     public void testGetStart() {
         System.out.println("getStart");
         Driver instance = new Driver("name");
-        instance.setStart("test");
-        String expResult = "test";
+        instance.setStart("start");
+        String expResult = "start";
         String result = instance.getStart();
         assertEquals(expResult, result);
     }
@@ -69,8 +69,8 @@ public class DriverTest {
     public void testGetEnd() {
         System.out.println("getEnd");
         Driver instance = new Driver("name");
-        instance.setEnd("test");
-        String expResult = "test";
+        instance.setEnd("end");
+        String expResult = "end";
         String result = instance.getEnd();
         assertEquals(expResult, result);
     }
@@ -82,9 +82,21 @@ public class DriverTest {
     public void testGetStreet() {
         System.out.println("getStreet");
         Driver instance = new Driver("name");
-        instance.setStreet("test");
-        String expResult = "test";
+        instance.setStreet("street");
+        String expResult = "street";
         String result = instance.getStreet();
+        assertEquals(expResult, result);
+    }
+
+    /**
+     * Test of getAkinaCount method, of class Driver. Initiate 0.
+     */
+    @Test
+    public void testGetAkinaCountInitiate() {
+        System.out.println("getAkinaCount");
+        Driver instance = new Driver("name");
+        int expResult = 0;
+        int result = instance.getAkinaCount();
         assertEquals(expResult, result);
     }
 
@@ -95,7 +107,8 @@ public class DriverTest {
     public void testGetAkinaCount() {
         System.out.println("getAkinaCount");
         Driver instance = new Driver("name");
-        int expResult = 0;
+        instance.visitAkina();
+        int expResult = 1;
         int result = instance.getAkinaCount();
         assertEquals(expResult, result);
     }
@@ -106,10 +119,10 @@ public class DriverTest {
     @Test
     public void testSetStart() {
         System.out.println("setStart");
-        String suburb = "test";
+        String suburb = "start";
         Driver instance = new Driver("name");
         instance.setStart(suburb);
-        String expResult = "test";
+        String expResult = "start";
         String result = instance.getStart();
         assertEquals(expResult, result);
     }
@@ -120,10 +133,10 @@ public class DriverTest {
     @Test
     public void testSetEnd() {
         System.out.println("setEnd");
-        String suburb = "test";
+        String suburb = "end";
         Driver instance = new Driver("name");
         instance.setEnd(suburb);
-        String expResult = "test";
+        String expResult = "end";
         String result = instance.getEnd();
         assertEquals(expResult, result);
     }
@@ -134,10 +147,10 @@ public class DriverTest {
     @Test
     public void testSetStreet() {
         System.out.println("setStreet");
-        String aStreet = "test";
+        String aStreet = "street";
         Driver instance = new Driver("name");
         instance.setStreet(aStreet);
-        String expResult = "test";
+        String expResult = "street";
         String result = instance.getStreet();
         assertEquals(expResult, result);
     }
@@ -148,31 +161,35 @@ public class DriverTest {
     @Test
     public void testUpdateSuburb() {
         System.out.println("updateSuburb");
-        String name = "test";
+        String name = "suburb";
         Driver instance = new Driver("name");
         instance.setEnd("end");
         instance.updateSuburb(name);
-        String expResult = "end" + "test";
+        String expResult = "end" + "suburb";
         String result = instance.getStart() + instance.getEnd();
         assertEquals(expResult, result);
     }
 
     /**
-     * Test of travelDetails method, of class Driver.
+     * Test of travelDetails method, of class Driver. 
      */
     @Test
     public void testTravelDetails() {
         System.out.println("travelDetails");
-        assertEquals(0, 0);
+        Driver instance = new Driver("name");
+        //instance.travelDetails();
+        assertEquals(0, 0); //Print
     }
 
     /**
-     * Test of exitMessage method, of class Driver.
+     * Test of exitMessage method, of class Driver. 
      */
     @Test
     public void testExitMessage() {
         System.out.println("exitMessageNone");
-        assertEquals(0, 0);
+        Driver instance = new Driver("name");
+        //instance.exitMessage();
+        assertEquals(0, 0); //Print
     }
 
     /**
@@ -189,20 +206,38 @@ public class DriverTest {
     }
 
     /**
-     * Test of akinaMessage method, of class Driver.
+     * Test of visitAkina method, of class Driver. x2.
+     */
+    @Test
+    public void testVisitAkina2() {
+        System.out.println("visitAkina2");
+        Driver instance = new Driver("name");
+        instance.visitAkina();
+        instance.visitAkina();
+        int expResult = 2;
+        int result = instance.getAkinaCount();
+        assertEquals(expResult, result);
+    }
+
+    /**
+     * Test of akinaMessage method, of class Driver. 
      */
     @Test
     public void testAkinaMessage() {
         System.out.println("akinaMessage");
-        assertEquals(0, 0);
+        Driver instance = new Driver("name");
+        //instance.akinaMessage();
+        assertEquals(0, 0); //Print
     }
 
     /**
-     * Test of akinaAdditionalMessage method, of class Driver.
+     * Test of akinaAdditionalMessage method, of class Driver. 
      */
     @Test
     public void testAkinaAdditionalMessage() {
         System.out.println("akinaAdditionalMessageNone");
-        assertEquals(0, 0);
+        Driver instance = new Driver("name");
+        //instance.akinaAdditionalMessage();
+        assertEquals(0, 0); //Print
     }
 }
