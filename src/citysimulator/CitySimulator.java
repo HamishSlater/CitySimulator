@@ -26,13 +26,10 @@ public class CitySimulator {
             System.out.print("You did not enter an integer, goodbye.");
             STOP = true;
         }
-
         if (!STOP) {
             int seed = in.nextInt();
             in.close();
-
             RANGEN.setSeed(seed);
-
             //run simulation
             City city = new City();
             city.run();
