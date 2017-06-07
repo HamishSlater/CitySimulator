@@ -23,8 +23,8 @@ public class CitySimulator {
         Scanner in = new Scanner(System.in);
         System.out.print("Enter an integer seed:");
         if (!in.hasNextInt()) {
-            System.out.print("You did not enter an integer, goodbye.");
-            STOP = true;
+                System.out.print("You did not enter an integer, goodbye.");
+                STOP = true;
         }
         if (!STOP) {
             int seed = in.nextInt();
